@@ -21,6 +21,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     libsystemd-dev \
     libjansson-dev \
     libgccjit-10-dev \
+    gcc-10 \
     libgif-dev \
     librsvg2-dev  \
     libxml2-dev \
@@ -38,7 +39,7 @@ RUN update-ca-certificates \
     && mv emacs/* .
 
 # Build
-# ENV CC="gcc-10"
+ENV CC="gcc-10"
 RUN ./autogen.sh && ./configure \
     --prefix "/usr/local" \
     --with-native-compilation \
